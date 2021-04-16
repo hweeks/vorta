@@ -1,0 +1,17 @@
+version: 1.0.0
+tasks:
+  test:
+    script: 'yarn run test'
+  lint:
+    script: 'yarn run lint'
+  build:
+    if: tasks.test.success === true && tasks.lint.success === true
+    script: 'yarn tsc'
+
+
+flows:
+  quality:
+    tasks:
+      - test
+      - lint
+      - build
