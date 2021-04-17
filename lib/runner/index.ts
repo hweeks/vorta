@@ -32,7 +32,7 @@ const pickTasksFromYaml = (tasks: string[], yaml: VortaConfig[]) => {
         if (cur.tasks[task]) acc[task] = cur.tasks[task]
       }
       return acc
-    }, {} as TaskMap);
+    }, {} as TaskMap)
 }
 
 const groupByExecution = (taskMap: TaskMap, tasks: string[]) => {
