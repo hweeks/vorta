@@ -4,6 +4,8 @@ tasks:
     script: 'yarn run test'
   lint:
     script: 'yarn run lint'
+  format:
+    script: 'yarn run format:check'
   build:
     if: tasks.test.success === true && tasks.lint.success === true
     script: 'yarn tsc'
@@ -14,4 +16,5 @@ flows:
     tasks:
       - test
       - lint
+      - format
       - build
