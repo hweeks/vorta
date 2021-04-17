@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a tool to manage your local",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "repository": "git@github.com:hweeks/vorta.git",
   "author": "hammy-late-nite <git@hweeks.com>",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "bbb": "babel-node --inspect-brk --extensions \".js,.ts\"",
     "bb": "babel-node --inspect --extensions \".js,.ts\"",
     "cli": "babel-node --extensions \".js,.ts\" ./lib/index.ts",
-    "prepublishOnly": "tsc"
+    "prepublishOnly": "tsc",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@babel/cli": "7.13.14",

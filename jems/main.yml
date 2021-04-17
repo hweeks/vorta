@@ -10,7 +10,6 @@ tasks:
     if: tasks.test.success === true && tasks.lint.success === true
     script: 'yarn tsc'
 
-
 flows:
   quality:
     tasks:
