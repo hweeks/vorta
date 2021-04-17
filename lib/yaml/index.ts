@@ -1,5 +1,5 @@
 import { PathLike } from "fs"
-import { relative, resolve } from "path"
+import { resolve } from "path"
 import { readdirSync, readSync, statSync } from "../core-utils"
 import yaml from "js-yaml"
 
@@ -33,11 +33,20 @@ export const processYaml = (yamlFiles: string[]): VortaConfig[] => {
 }
 
 export const getYamlFiles = async (cwd: PathLike): Promise<string[]> => {
-  const possibleJems = relative(cwd.toString(), "./jems")
-  const jemStats = await statSync(possibleJems)
-  if (!jemStats.isDirectory()) {
+  const possibleJems = resolve(cwd.toString(), "./jems")
+  let jemStats
+  try {
+    jemStats = await statSync(possibleJems)
+  } catch (error) {
+    if (!jemStats) {
+      throw new Error(
+        `I'm going to be honest here, I can't find anything worth it's mustard in ${possibleJems}`
+      )
+    }
+  }
+  if (jemStats && !jemStats.isDirectory()) {
     throw new Error(
-      `I'm going to be honest here, I can't find anything worth it's mustard in ${possibleJems}`
+      `I'm going to be honest here, I can't find anything worth loading in ${possibleJems}`
     )
   }
   const allJems = await readdirSync(possibleJems)
