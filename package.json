@@ -10,7 +10,7 @@
     "vorta": "dist/index.js"
   },
   "scripts": {
-    "postinstall": "husky install",
+    "prepare": "husky install",
     "lint": "eslint ./ --ext .js,.ts",
     "format:write": "prettier --write ./lib ./__tests__",
     "format:check": "prettier --check ./lib ./__tests__",
@@ -58,10 +58,5 @@
   "dependencies": {
     "js-yaml": "4.1.0",
     "yargs": "16.2.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format:write"
-    }
   }
 }
