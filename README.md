@@ -10,10 +10,10 @@ A developers local environment is as important, if not more so, than production.
 
 ## how does it work?
 
-`vorta` is designed to look at the `./jems` folder relative to your `cwd` for the `vorta-cli`. In the `./jems` folder you have a series of `.yml` files that can be run. To run a single `jem` you'd call:
+`vorta` is designed to look at the `./jems` folder relative to your `cwd` for the `vorta`. In the `./jems` folder you have a series of `.yml` files that can be run. To run a single `jem` you'd call:
 
 ```sh
-$ vorta-cli <jem-name>
+$ vorta <jem-name>
 finding <jem-name>...
 running <jem-name> steps!
 ...

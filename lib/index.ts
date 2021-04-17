@@ -1,6 +1,22 @@
-export const base = 'todo: build app'
+#!/usr/bin/env node
 
-if (process.env.NODE_ENV !== 'test') {
-  console.warn('The project is not built yet! Please wait to use this until then!')
-  process.exit(1)
-}
+import yargs, { Argv } from "yargs"
+import { findParseAndReturnYaml } from "./yaml"
+import { runAFlow } from "./runner"
+
+yargs
+  .command(
+    "flow <name>",
+    "run a flow of a given name",
+    (yargInput: Argv) => {
+      return yargInput.option("name", {
+        describe: "The flow you wish to execute",
+        default: "",
+      })
+    },
+    async function ({ name }) {
+      const yml = await findParseAndReturnYaml(process.cwd())
+      runAFlow(name, yml)
+    }
+  )
+  .help().argv

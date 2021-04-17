@@ -28,10 +28,8 @@ jobs:
       - name: Install modules
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
-      - name: Lint code
-        run: yarn lint
-      - name: Test code
-        run: yarn test
+      - name: test/lint/build code
+        run: yarn cli flow quality
       - name: Lint commit
         run: yarn commitlint $( git log -1 --pretty=format:"%s" )
 
